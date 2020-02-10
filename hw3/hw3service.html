@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>iRecovery Co.: About</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--- External Stylesheet --->
+	<link rel="stylesheet" type = "text/css" href="hw3style.css" />
+    
+    <!--- Internal Stylesheet --->
+<style type="text/css">
+	.background {
+		background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url(phone-repair-2.jpg);
+		height: 100vh;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+    
+    /*Images Using Flexbox */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 5px;
+        justify-content: center;
+    }
+
+    .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 5px;
+        justify-content: center;
+    }
+
+    .column img {
+        vertical-align: middle;
+        margin-top: 10px;
+    }
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+    @media (max-width: 800px) {
+        .column {
+            flex: 50%;
+            max-width: 50%;
+        }
+    }
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media (max-width: 600px) {
+        .column {
+            flex: 100%;
+            max-width: 100%;
+        }
+    }
+    
+    h2 {
+        font-size: 20px;
+        text-align: center;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+    
+</style>    
+</head>
+    
+<body>
+    <div class="header-fixed">
+        <div class="header">
+            <a href="#hw3index.html" class="logo">iRecovery Co.</a>
+            <div class="header-right">
+                <a href="hw3index.html"><h4>HOME</h4></a>
+                <a href="hw3service.html"><h4>SERVICES</h4></a>
+                <a href="hw3contact.html"><h4>CONTACT</h4></a>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="background">
+  		<p id="center" style="font-size: 28px; color: white">   <br>
+  		    <br>
+            <br>
+  		    <br>
+            <br>
+            <br>
+  		    Our services include repairing: <br>
+            <br>
+  		    <ul id="center" style="list-style-type:none; font-size: 22px; color: #ADD8E6">
+                <li>Apple Phones</li>
+                <li>Android Phones</li>
+				<li>Windows Phones</li>
+                <li>Blackberry Phones</li>
+                <li>Other OS (Feature) Phones</li>
+                <li>Landline Phones</li>
+                <li>Phone Accessories</li>
+                <li>&nbsp;</li>
+                <li><id="center" style="font-size: 15px; color: white"> *All are eligible for same day service. </id></li>
+            </ul>
+        </p>
+    </div>
+    
+    <h2>&nbsp;<br>
+        You Can Trust iRecovery to Fix Your Phone.<br>
+        &nbsp;<br>
+    </h2>
+    
+    
+    <!-- Photos Using Flexbox -->
+<div class="row"> 
+  <div class="column">
+    <img src="phone-repair-2.jpg" style="width:100%">
+    <img src="phone-repair-4.jpg" style="width:100%">
+    <img src="phone-repair-5.jpg" style="width:100%">
+  </div>
+  
+  <div class="column">
+    <img src="phone-repair-6.jpg" style="width:100%">
+    <img src="phone-repair-7.jpg" style="width:100%">
+    <img src="phone-repair-9.png" style="width:100%">
+</div>
+
+   
+  <div class="column">
+    <img src="phone-repair.jpg" style="width:100%">
+    <img src="phone-repair-8.jpg" style="width:100%">
+    <img src="phone-repair-3.jpg" style="width:100%">
+</div>
+</div>
+
+
+    
+        <p class="bottom"> 
+            &nbsp; <br>
+            Thank You for Choosing iRecovery Co.! </p>
+
+        <p class="bottom"> 
+            <a href="#center">Back to Top</a><br>
+            &nbsp;<br>
+            &nbsp;<br>
+        </p>
+    
+        <div class="footer">
+            <p style="Trebuchet MS", Helvetica, sans-serif>© iRecovery Co., 2019</p>
+        </div>
+</body>
+
+</html>
