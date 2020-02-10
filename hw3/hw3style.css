@@ -1,0 +1,88 @@
+/* External CSS Stylesheet */
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body { 
+    margin: 0;
+    background-color: #F5F5F5;
+}
+
+.header-fixed {
+    width:100%;
+    position:fixed;
+    top:0px;
+}
+
+/* Heading Style */
+.header {
+    background-color: #5F9EA0;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.header-right {
+  float: right;
+}
+
+/* Company Heading */
+.header a {
+    float: left;
+    color: #000080;
+    padding: 12px;
+    font-size: 18px; 
+    line-height: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.header a.logo {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+.header a:hover {
+    background-color: #F5F5F5;
+    color: #B0C4DE;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+/* Navigation Menu Font */
+h4 {
+    color: #ADD8E6;
+    font-family: Arial, Helvetica, Sans Serif;
+}
+
+/* Center Text for Each Page */
+#center {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+p.bottom {
+    text-align: center;
+    color: #008B8B;
+    font-size: 16px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+ul {
+    text-align: center;
+    list-style: inside;
+    font-family: Arial, Helvetica, Sans Serif;
+}
