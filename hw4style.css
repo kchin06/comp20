@@ -1,0 +1,40 @@
+setlist {
+	font-size:15px;
+	color: #008B8B;
+	font-family: Arial, Helvetica, Sans Serif;
+	display: block;
+	text-align: center;
+}
+
+song {
+	display:block;
+	border:2px solid #BC8F8F;
+	padding:4px;
+	background-color: #F5F5F5;
+}
+
+title {
+	display:block;
+	color: black;
+	text-decoration: underline;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+artist {
+	display:block;
+	color:#800000;
+	font-size: 15px;
+}
+
+genre {
+	display:block;
+	color:#F08080;
+	font-size: 15px;
+}
+
+year {
+	display:block;
+	color:#6495ED;
+	font-size: 15px;
+}
