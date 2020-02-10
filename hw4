@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="hw4style.css"?>
+
+<setlist>
+   <song>
+       <title>Circles</title>
+       <artist>Post Malone</artist>
+       <genre>Pop</genre>
+       <year>2019</year>
+   </song>
+
+   <song>
+       <title>Bad Guy</title>
+       <artist>Billie Eilish</artist>
+       <genre>Pop</genre>
+       <year>2019</year>
+   </song>
+
+   <song>
+       <title>Lover</title>
+       <artist>Taylor Swift</artist>
+       <genre>Pop</genre>
+       <year>2019</year>
+   </song>
+
+    <song>
+       <title>Self Control</title>
+       <artist>Frank Ocean</artist>
+       <genre>R&amp;B</genre>
+       <year>2016</year>
+   </song>
+
+   <song>
+       <title>Japanese Denim</title>
+       <artist>Daniel Caesar</artist>
+       <genre>R&amp;B</genre>
+       <year>2016</year>
+   </song>
+
+   <song>
+       <title>Sanctuary</title>
+       <artist>Joji</artist>
+       <genre>Pop</genre>
+       <year>2019</year>
+   </song>
+
+   <song>
+       <title>Paris in the Rain</title>
+       <artist>Lauv</artist>
+       <genre>Pop</genre>
+       <year>2018</year>
+   </song>
+
+   <song>
+       <title>Fly Me To The Moon</title>
+       <artist>Frank Sinatra</artist>
+       <genre>Jazz</genre>
+       <year>1964</year>
+   </song>
+
+   <song>
+       <title>Empire State of Mind</title>
+       <artist>Alicia Keys</artist>
+       <genre>Pop</genre>
+       <year>2009</year>
+   </song>
+
+   <song>
+       <title>My Funny Valentine</title>
+       <artist>Chet Baker</artist>
+       <genre>Jazz</genre>
+       <year>1961</year>
+   </song>
+
+</setlist>
