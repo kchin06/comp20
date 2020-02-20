@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joe's Hotdogs</title>
+</head>
+
+<body>
+	<h1>Welcome to Joe's Hotdogs!</h1>
+    
+	<script language="javascript">
+        document.write("<h2 style='color:#ff0000'>Your Order</h2>");
+        var hotdogs, fries, drinks;
+        hotdogs = prompt("How many hotdogs?");
+        fries = prompt("How many fries?");
+        drinks = prompt("How many drinks?");
+        
+        var price_hotdogs, price_fries,  price_drinks;
+        price_hotdogs = hotdogs * 3.25;
+        document.write("# Hotdogs: " + hotdogs + " at $3.25 is $" + price_hotdogs.toFixed(2) + "<br />");
+        
+        price_fries = fries * 2.00;
+        document.write("# Fries: " + fries + " at $2.00 is $" + price_fries.toFixed(2) + "<br />");
+        
+        price_drinks = drinks * 1.50;
+        document.write("# Drinks: " + drinks + " at $1.50 is $" + price_drinks.toFixed(2) + "<br />");
+        
+        var total, tax, subtotal, new_subtotal;
+        subtotal = price_hotdogs + price_fries + price_drinks;
+        
+        if (subtotal >= 20) {
+            document.write("You qualified for our 10% discount." + "<br />");
+            new_subtotal = subtotal - (subtotal*0.1);
+        }
+        else {
+            document.write("You do not qualify for a discount." + "<br />")
+            new_subtotal = subtotal;
+        }
+        
+        document.write("Subtotal: $" + new_subtotal.toFixed(2) + "<br />");
+        
+        function calctax(new_subtotal) {
+            tax = new_subtotal * 0.0625;
+            return tax;
+        }
+        
+        tax = calctax(new_subtotal);
+        document.write("Meals Tax: $" + tax.toFixed(2) + "<br />");
+        
+        function calctotal(new_subtotal,tax){
+            total = new_subtotal + tax;
+            return total;
+        }
+        
+        total = calctotal(new_subtotal,tax);
+        document.write("Total: $" + total.toFixed(2) + "<br />");
+        
+	</script>
+	
+</body>
+</html>
