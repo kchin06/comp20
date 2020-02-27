@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Pick</title>
+    <style>
+        h1 {
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 28px;
+            margin-top: auto;
+        }
+        table {
+            text-align: left;
+            border: 1px dotted #000000;
+            padding: 3px;
+        }
+
+        /* <td> for standard cells */
+        td {
+            border: 1px dotted #F08080;
+            padding: 3px; 
+        }
+    </style>
+    
+    <script language="javascript">
+        function getRandom() {
+            var rand = Math.round((Math.random() * 48) + 1);
+            return rand;
+        }
+        
+        // Separates and gets the values
+        function GetValues() {
+            window.finalNums = document.getElementById("numsArray").value.split(" ");
+            window.finalLuck = document.getElementById("lucky").value;
+        }
+        // Finds matches between the randomly generated lucky numbers and user inputs
+        // Counts number of matches
+        function countMatch() {
+            matchCount = 0;
+            for (i = 0; i < numsArray.length; i++) {
+                for (j = 0; j < window.finalNums.length; j++) {
+                    if (numsArray[i] == window.finalNums[j]) {
+                        matchCount++;
+                        window.finalNums[j] = 0;
+                    }
+                }
+            }
+        }
+        // Payout calculator, an alert pops up with final amount if user wins 
+        function calcPayout() {
+            if ((matchCount == 0) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $4!")} 
+            else if ((matchCount == 1) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $6!")}
+            else if ((matchCount == 2) && (window.finalLuck != lucky)) {
+                alert("Match was found. You win $3!")}
+            else if ((matchCount == 2) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $25!")}
+            else if ((matchCount == 3) && (window.finalLuck != lucky)) {
+                alert("Match was found. You win $20!")}
+            else if ((matchCount == 3) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $150!")}
+            else if ((matchCount == 4) && (window.finalLuck != lucky)) {
+                alert("Match was found. You win $200!")}
+            else if ((matchCount == 4) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $5000!")}
+            else if ((matchCount == 5) && (window.finalLuck != lucky)) {
+                alert("Match was found. You win $25,000 a YEAR for LIFE!")}
+            else if ((matchCount == 5) && (window.finalLuck == lucky)) {
+                alert("Match was found. You win $7,000 a WEEK for LIFE!")}
+            else { 
+                alert("Match was not found. Try again!")}  
+        }
+  
+    </script>  
+</head>
+    
+<body>
+
+    <h1> Quick Pick </h1>
+    <em>This is a “quick pick” for a Mass Lottery “Lucky for Life” game.</em><br/> 
+    <br/>
+  
+    <script language="javascript">
+        // Gets the 6 random numbers
+        var num1, num2, num3, num4, num5, luck;
+        num1 = getRandom();
+        num2 = getRandom();
+        num3 = getRandom(); 
+        num4 = getRandom(); 
+        num5 = getRandom();
+        lucky = Math.round((Math.random() * 18) + 1);
+        // array stores and displays random numbers 1 - 5 in a table
+        var numsArray = [num1, num2, num3, num4, num5];
+        document.write("Here are the lottery numbers! <br> <table>");
+        for (i = 0; i < numsArray.length; i++) {
+            document.write("<tr> <td> Number " + (i+1) + " </td> <td>" + numsArray[i] + "</td> </tr>");
+        }
+        // displays the random lucky number
+        document.write("<tr> <td> <strong> Lucky Ball <strong/> </td> <td>" + lucky + "</td> </tr>");
+        document.write("</table> <br>");
+        
+        // Sort Numbers and Display again
+        // sort() function sorts numbers in an array in ascending order
+        numsArray.sort(function(a, b){return a-b});
+        document.write("Here are the lottery numbers sorted! <br> <table>");
+        for (i = 0; i < numsArray.length; i++) {
+            document.write("<tr> <td> Number " + (i+1) + " </td> <td>" + numsArray[i] + "</td> </tr>");
+        }
+        document.write("<tr> <td> <strong> Lucky Ball <strong/> </td> <td>" + lucky + "</td> </tr>");
+        document.write("</table> <br>");
+    </script>  
+
+    <form name="form1">
+        Input Your 5 Numbers: <br> 
+        <input type="text" placeholder="Lucky Numbers (1-48) without commas" id="numsArray" size="40%"> <br> 
+        <br>
+        Input your Lucky Ball Number: <br>
+        <input type="text" placeholder="Lucky Ball (1-18)" id="lucky"> 
+        <br>
+        <br>
+        <button type="button" onclick="GetValues();countMatch();calcPayout();">Submit</button>
+    </form>
+    
+</body>
+</html>
