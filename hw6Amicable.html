@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amicable Numbers</title>
+    <style type="text/css">
+		html,body,input {
+            font-size: 18px;
+            color: #008B8B;
+        }
+	</style>
+	<script language="javascript">
+		function getNums(){
+            n1 = document.getElementById("num1").value;
+			n1 = parseInt(n1);
+			n2 = document.getElementById("num2").value;
+            n2 = parseInt(n2);
+            //document.write("Number 1 is " + n1 + "<br/>");
+            //document.write("Number 2 is " + n2 + "<br/>");
+		}
+        
+        function isFactor(num,test) {
+            if (num == 0){
+                document.write("The number is " + num + "<br/>");
+                document.write("If statement <br/>");
+                document.write("Test: num2 is not a factor of num1 <br/>");
+                return false;
+            }
+            else if ((num % test) == 0) {
+                document.write("The number is " + num + "<br/>");
+                document.write("Else if statement <br/>");
+                document.write("Test: num2 is a factor of num1 <br/>");
+                return true;
+            }
+            else {
+                document.write("The number is " + num + "<br/>");
+                document.write("Else statement <br/>");
+                document.write("Test: num2 is not a factor of num1 <br/>");
+                return false;
+            }
+        }
+        
+        /* isFactor Test Runs
+            isFactor(10,2): Test: num2 is a factor of num1
+            isFactor(220,1): Test: num2 is a factor of num1
+            isFactor(0,1): Test: num2 is not a factor of num1
+            isFactor(25,2):Test: num2 is not a factor of num1
+        */
+        
+        function showFactors(factorArray) {
+            array = " ";
+            for (i = 0; i < factorArray.length; i++) {
+                //document.write(factorArray[i]+ " ");
+                array += factorArray[i] + " ";
+            }
+            return array;
+        }
+         /* showFactors Test Runs
+            showFactors([1,2,3,4,5]): 1 2 3 4 5
+            showFactors([5,10,4,3,5]): 5 10 4 3 5
+            showFactors([6,13,3,9,13]): 6 13 3 9 13
+        */
+        
+        function addFactors(factorArray) {
+            var sum = 0;
+            for (i = 0; i < factorArray.length; i++) {
+                sum += factorArray[i];
+            }
+            //document.write("Here is the sum: " + sum + "<br/>");
+            return sum;
+        }
+        /* addFactors Test Runs
+            addFactors([2,3,4]): Here is the sum: 9
+            addFactors([22,4,6,7,9]): Here is the sum: 48
+            addFactors([6,13,3,9,13]): Here is the sum: 44
+        */
+        
+        function getFactors(num) {
+            array=[];
+            for (i = 1; i <= num; i++) {
+                if((num%i)==0) {
+                    array.push(i);
+                }
+            }
+        //alert(array);
+        return array;
+        }
+        
+        /* getFactors Test Runs
+            getFactors(10): 1,2,5,10
+            getFactors(1250): 1,2,5,10,25,50,125,250,625,1250
+            getFactors(113): 1,113
+            getFactors(220): 1,2,4,5,10,11,20,22,44,55,110,220
+        */
+        
+        function getLastFactor(factorArray) {
+            var last = factorArray[factorArray.length - 1];
+            return last;
+        } 
+        
+        function checkAmicable() {
+            getNums();
+            document.write("<h1> Amicable Numbers Checker </h1>");
+            document.write("Your input for Number 1 is: " + n1 + "<br/>");
+            document.write("Your input for Number 2 is: " + n2 + "<br/><br/>");
+            n1_factors = getFactors(n1);
+            n2_factors = getFactors(n2);
+            document.write("Here are the factors for Number 1:" + showFactors(n1_factors) + "<br/>");
+            document.write("Here are the factors for Number 2:" + showFactors(n2_factors) + "<br/><br/>");
+            
+            sum_n1_factors = addFactors(n1_factors) - getLastFactor(n1_factors);
+            sum_n2_factors = addFactors(n2_factors) - getLastFactor(n2_factors);
+            document.write("Here are the sum of the factors for Number 1: " + sum_n1_factors + "<br/>");
+            document.write("Here are the sum of the factors for Number 2: " + sum_n2_factors + "<br/><br/>");
+            
+            if(sum_n1_factors == n2 && sum_n2_factors == n1) {
+                document.write("Result: " + n1 + " and " + n2 + " ARE amicable numbers!");
+            }
+            else {
+                document.write("Result: " + n1 + " and " + n2 + " ARE NOT amicable numbers.");
+            }
+        }
+	</script>
+</head>
+
+<body>
+    <h1> Amicable Numbers Checker</h1>
+	
+	<form name="form1">
+		Number 1 <input type="text" name="num1" id="num1"><br/>
+        <br/>
+		Number 2 <input type="text" name="num2" id="num2">
+		<hr />
+		<br/>
+		<input type="button" value = "Calculate" onclick ="checkAmicable();">
+
+	</form>
+</body>
+</html>
