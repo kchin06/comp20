@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jade Delight</title>
+</head>
+
+<body>
+<script language="javascript">
+
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost=cost;
+}
+
+menuItems = new Array(
+	new MenuItem("Chicken Chop Suey", 4.5),
+	new MenuItem("Sweet and Sour Pork", 6.25),
+	new MenuItem("Shrimp Lo Mein", 5.25),
+	new MenuItem("Moo Shi Chicken", 6.5),
+	new MenuItem("Fried Rice", 2.35)
+);
+
+function makeSelect(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' size='1'";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>"; 
+	return t;
+}
+    
+</script>
+
+<h1>Jade Delight</h1>
+<form>
+
+    <p>First Name: <input type="text"  name='fname' /></p>
+    <p>Last Name*:  <input type="text"  name='lname' /></p>
+    <p>Street: <input type="text"  name='street' /></p>
+    <p>City: <input type="text"  name='city' /></p>
+    <p>Phone*: <input type="text"  name='phone' /></p>
+    
+    <p> 
+	   <input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup  
+	   <input type="radio"  name='p_or_d' value = 'delivery'/> Delivery
+    </p>
+    
+    <table border="0" cellpadding="3" id="menu">
+    <tr>
+        <th>Select Item</th>
+        <th>Item Name</th>
+        <th>Cost Each</th>
+        <th>Total Cost</th>
+    </tr>
+    
+    <script language="javascript">  
+        var s = "";
+        for (i=0; i< menuItems.length; i++)
+        {
+	       s += "<tr><td>";  // line 1 of table, Select Item, Item Name, etc
+	       s += makeSelect("quan" + i, 0, 10); //selection boxes
+	       s += "</td><td>" + menuItems[i].name + "</td>"; // name of items
+	       s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>"; // cost
+	       s += "<td>$<input type='text' name='cost' id = 'menu'/></td></tr>";
+        }
+        document.writeln(s);
+        
+/* Added Javascript */
+        
+        /* onchange event occurs when the "select item" has been changed */
+        for (i = 0; i < menuItems.length; i++) {
+            window.selectItems = document.getElementsByName("quan"+i);
+            window.selectItems[0].onchange=function(){calculate()};       
+        }
+        
+        function calculate() {
+            var cost = 0, subtotal = 0, tax = 0, total = 0; 
+                for(i = 0; i < menuItems.length; i++) {
+                    window.selectItems = document.getElementsByName("quan"+i);
+                    // cost calculates the quantity of selected item multipled by item cost
+                    cost = window.selectItems[0].value * menuItems[i].cost; 
+                    subtotal += cost; 
+                    tax = subtotal * 0.0625; 
+                    total = subtotal + tax; 
+                    window.itemTotalCost = document.getElementById("menu").rows[i+1].cells[3].children[0];
+                    window.itemTotalCost.value = cost.toFixed(2);    
+                }
+        
+            document.getElementById("subtotal").value = subtotal.toFixed(2); 
+            document.getElementById("tax").value = tax.toFixed(2); 
+            document.getElementById("total").value = total.toFixed(2);
+            window.totalCost = total.toFixed(2);
+        }
+
+    function lastName(lname) {
+        if (lname == "") {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+        
+    function phonenumber(phone) {
+        var phoneno = /^\d{10}$/;
+        if(phone.match(phoneno)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+        
+    function delivery(input1, input2) {
+        if (input1 == "" || input2 == "") {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
+        
+    function test() {
+        if (document.getElementsByName('lname')[0].value == "" || document.getElementsByName('phone')[0].value == "") {
+            alert("VALIDATION ISSUE OCCURED. Please double check your inputted information to make sure all required fields are completed and valid. Thank you.");
+        }
+        if (phonenumber(document.getElementsByName('phone')[0].value) == false) {
+            alert("Please enter a valid 10-digit phone number with no spaces/hyphens.");
+        }
+        else if (document.getElementsByName("p_or_d")[0].checked == true) {
+            var today = new Date();
+            var today2 = new Date(today);
+            today2.setMinutes(today.getMinutes() + 15);
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "<br>";
+            // time 2 calculates the +15min for pickup
+            var time2 = today2.getHours() + ":" + today2.getMinutes() + ":" + today2.getSeconds() + "<br>";
+            document.write("Your order was placed on: " + time); 
+            document.write("Thank you for choosing pick-up at Jade Delight. <br>");
+            document.write("Your pick-up time is: " + time2);
+            var cost = window.totalCost;
+            document.write("Your total cost is: $" + cost);
+            
+        }
+        else {
+            if (delivery(document.getElementsByName('street')[0].value, document.getElementsByName('city')[0].value) == false) {
+                alert("Please enter a valid address, including street and city.");
+            }
+            else {
+                var today = new Date();
+                var today2 = new Date(today);
+                today2.setMinutes(today.getMinutes() + 30);
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "<br>";
+                // time 2 calculates the +30min for delivery
+                var time2 = today2.getHours() + ":" + today2.getMinutes() + ":" + today2.getSeconds() + "<br>";
+                document.write("Your order was placed on: " + time); 
+                document.write("Thank you for choosing delivery at Jade Delight. <br>");
+                document.write("You will receive your delivery at: " + time2);
+                var cost = window.totalCost;
+                document.write("Your total cost is: $" + cost);
+            }
+        }
+            
+    }
+        
+
+    </script>
+
+        
+        
+    </table>
+    
+    <p>Subtotal: $<input type="text"  name='subtotal' id="subtotal" />
+    </p>
+    <p>Mass tax 6.25%:$ <input type="text"  name='tax' id="tax" />
+    </p>
+    <p>Total: $ <input type="text"  name='total' id="total" />
+    </p>
+
+    <input type = "submit" value = "Submit Order" onclick = "test();"/>
+    
+</form>
+        
+</body>
+    
+</html>
