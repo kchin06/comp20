@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>Assignment 9: JSON</title>
+    
+    <style type ="text/css">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            text-align: center;
+            background-color: #F0F8FF;
+        }
+        .title {
+            text-align: center;
+            color: #CD5C5C;
+        }
+        
+        #serialized {
+            color: #2F4F4F;
+        }
+    </style>
+    
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <h1><b>Set List:</b></h1>
+    <p id="displayList"></p>
+    <b><em>Serialized JSON data is displayed below.</em></b><br>
+    <p id="serialized"></p>
+    <b><em>Filter by Genre</em></b><br><br>
+    <div id="filter"></div>
+    
+<script> 
+
+var setList =  {
+    "fullList": {
+        "1": {
+            "Title": "Love the Way You Lie",
+            "Artist": [
+                "Eminem", 
+                "Rihanna"
+            ],
+            "Genre": [
+                "Pop", 
+                "Hip-Hop"
+            ],
+            "Released": "2010"
+        },
+        
+        "2": {
+            "Title": "Senorita",
+            "Artist": [
+                "Shawn Mendes", 
+                "Camila Cabello"
+            ],
+            "Genre": [
+                "Pop"
+            ],
+            "Released": "2019"    
+        },
+
+        "3": {
+            "Title": "Beauty And A Beat",
+            "Artist": [
+                "Justin Bieber", 
+                "Nicki Minaj"
+            ],
+            "Genre": [
+                "EDM", 
+                "Pop", 
+                "Dance-Pop"
+            ],
+            "Released": "2013"
+        },
+
+        "4": {
+            "Title": "lovely",
+            "Artist": [
+                "Billie Eilish", 
+                "Khalid"
+            ],
+            "Genre": [
+                "Pop", 
+                "Alternative"
+            ],
+            "Released": "2018"
+        },
+
+        "5": {
+            "Title": "10,000 Hours",
+            "Artist": [
+                "Dan + Shay", 
+                "Justin Bieber"
+            ],
+            "Genre": [
+                "Country"
+            ],
+            "Released": "2019"
+        },
+
+        "6": {
+            "Title": "Seoul Town Road",
+            "Artist": [
+                "Lil Nas X", 
+                "RM"
+            ],
+            "Genre": [
+                "Country", 
+                "Pop"
+            ],
+            "Released": "2019"
+        },
+
+        "7": {
+            "Title": "Best Part",
+            "Artist": [
+                "Daniel Caesar", 
+                "H.E.R."
+            ],
+            "Genre": [
+                "R&B", 
+                "Alternative"
+            ],
+            "Released": "2017"
+        },
+
+        "8": {
+            "Title": "That's What I Like",
+            "Artist": [
+                "Bruno Mars"
+            ],
+            "Genre": [
+                "R&B", 
+                "Hip-Hop", 
+                "Funk"
+            ],
+            "Released": "2019"
+        },
+
+        "9": {
+            "Title": "Closer",
+            "Artist": [
+                "The Chainsmokers", 
+                "Halsey"
+            ],
+            "Genre": [
+                "EDM", 
+                "Dance-Pop"
+            ],
+            "Released": "2016"
+        },
+
+        "10": {
+            "Title": "i'm so tired",
+            "Artist": [
+                "Lauv", 
+                "Troye Sivan"
+            ],
+            "Genre": [
+                "Pop", 
+                "Electro-Pop"
+            ],
+            "Released": "2019"
+        }
+    }
+}
+
+/* JSON into a JSON string that can be transferred*/
+var strList = JSON.stringify(setList);
+/* JSON serialized string back to JSON object */
+var objList = JSON.parse(strList);
+
+var list = objList['fullList'];
+
+/* Serialize and display data */
+document.getElementById("serialized").innerHTML = strList;
+
+
+$('#displayList').ready(function() { 
+    /* Setlist dispayed in a user-friendly format*/
+    for (i = 1; i <= 10; i++) {
+        /* i is the song "#" in setlist */
+        $('#displayList').append('<b>' + "<div class='title'>" + list[i]['Title']+ '</div>' + '</b>');
+        if (objList['fullList'][i]['Artist'].length == 1) {  
+            $('#displayList').append('Artist(s): ' + list[i]['Artist'] + '<br>'); 
+        }
+        else {
+            /* more than one artist */
+            $('#displayList').append('Artist(s): ' + list[i]['Artist'][0]); 
+            for (j = 1; j < list[i]['Artist'].length; j++) {
+                $('#displayList').append(', ' + list[i]['Artist'][j]); 
+            }
+            $('#displayList').append('<br>'); 
+        }
+        if (list[i]['Genre'].length == 1) {  
+            $('#displayList').append('Genre(s): ' + list[i]['Genre'] + '<br>'); 
+        }
+        else {
+            /* more than one genre */
+            $('#displayList').append('Genre(s): ' + list[i]['Genre'][0]); 
+            for (j = 1; j < list[i]['Genre'].length; j++) {
+                $('#displayList').append(', ' + list[i]['Genre'][j]); 
+            }
+            $('#displayList').append('<br>');       
+        }  
+        $('#displayList').append('Released in ' + list[i]['Released'] + '<br><br>');
+    } 
+});
+    
+
+/* filter and display only song titles from the selected genre */
+$('#filter').ready(function() {
+    $('button').click(function() {
+        $('#filter').empty();
+        for (i = 1; i <= 10; i++) {
+            for (j = 0; j < list[i]['Genre'].length; j++) {
+                if($('select#genre').val() == (list[i]['Genre'][j])) {
+                    $('#filter').append('<b>' + "<div class='title'>" + list[i]['Title']+ '</div>' + '</b></br>');
+     
+          }
+        } 
+      } 
+    });
+  });
+    
+</script>
+<br>
+
+<!--- Filtering the data: form that allows user to pick genre -->
+<form>
+    <b><em>Select to Filter by Genre:</em></b>
+    <select id="genre">
+        <option value="Pop">Pop</option>
+        <option value="Hip-Hop">Hip-Hop</option>
+        <option value="EDM">EDM</option>
+        <option value="Dance-Pop">Dance-Pop</option>
+        <option value="Alternative">Alternative</option>    
+        <option value="Country">Country</option>
+        <option value="R&B">R&B</option>
+        <option value="Funk">Funk</option>
+        <option value="Electro-Pop">Electro-Pop</option>
+    </select>
+    &nbsp;
+    <button type="button" id="button">Filter</button>
+</form>
+<br>
+
+</body>
+</html>
