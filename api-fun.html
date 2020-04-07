@@ -57,6 +57,7 @@
 			}
 			console.log("Ready state changed!");
 		}
+		request.withCredentials = false;
 		request.send();
 		console.log("Request sent");
 	};
