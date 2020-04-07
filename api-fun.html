@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<title>API Fun!</title>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+	h1 {
+		color: #008B8B;
+	}
+</style>
+</head>
+
+<script>
+	/* Use the AJAX data pattern to send a request to the API SmartyStreets, retrieve some data and display the data */
+	function get() {			
+		var request = new XMLHttpRequest();
+		console.log("Request object created.");
+
+		request.open("GET", "https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155", true);
+		console.log("Opened request file.");
+
+		request.onreadystatechange = function() {
+			console.log("Readystatechange event fired. ");
+
+			if(request.readyState == 0) {
+				console.log(request.readyState + ". Unsent - nothing happened yet. http status=" + request.status);
+			}
+			else if(request.readyState == 1) {
+				console.log(request.readyState + ". Opened - send() not yet called. http status=" + request.status);
+			}
+			else if(request.readyState == 2) {
+				console.log(request.readyState + ". Headers received - send() and open() called. http status=" + request.status);
+			}
+			else if(request.readyState == 3) {
+				console.log(request.readyState + ". Loading - data is being received. http status=" + request.status);
+			}
+			else if(request.readyState == 4) {
+				console.log(request.readyState + ". Done - operation completed. http status=" + request.status);
+				if(request.status == 200) {
+					console.log("Successful completion!");
+					var result = request.responseText;
+					var data = JSON.parse(result);
+
+					document.getElementById("link").innerHTML = "<b>Requested URL:</b> <a href=https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155 > https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155</a> <br> <br>";
+
+					document.getElementById("data").innerHTML = "<b>Formatted Delivery Address: </b><br>" + data[0].delivery_line_1 + 
+							    "<br> " + data[0].last_line + "<br><br>";
+
+					document.getElementById("component").innerHTML = "<b> Address Components: </b><br>" + "Primary Number: " + data[0].components.primary_number + 
+							    "<br> Street Name: " + data[0].components.street_name + " " + data[0].components.street_suffix + "<br>" + "City Name: " + data[0].components.city_name + "<br> State: " + data[0].components.state_abbreviation + "<br> Zipcode: " + data[0].components.zipcode + "<br> County Name: " + data[0].metadata.county_name + "<br> Delivery Point Barcode: " + data[0].delivery_point_barcode + "<br> Time Zone : " + data[0].metadata.time_zone + "<br><br>";		    	
+				}
+				/* if request status is not 200, it is not successful */
+				else {
+					console.log("Request stastus error. The status is: " + request.status);
+				}		
+			}
+			console.log("Ready state changed!");
+		}
+		request.send();
+		console.log("Request sent");
+	};
+
+</script>
+
+<body onload= "get()">
+	<h1>API Fun: SmartyStreets API</h1>
+	<div id="link"></div>
+	<div id="data"></div>
+	<div id="component"></div>
+
+<div id="API">
+	<b>API Description:</b> The API that I selected is from SmartyStreets. It is a US Street Address API and it can be used for address validation for US addresses. Data from the address that is inputted into the query string is returned in JSON format and accessible with a GET request using AJAX.<br><br>
+	<b>API Website:</b> <a href="https://smartystreets.com/docs/cloud/us-street-api#http-request-url" target="_blank">https://smartystreets.com/docs/cloud/us-street-api#http-request-url</a> <br><br>
+	<b>Options I Used for API request:</b> 
+	The options that I used for this API request is inputting the components of the address, which includes primary number, street name, city name, and zipcode. After the address is inputted, SmartyStreets will validate the address. It will return the other components of the address, including any missing components or extra information, such as county, latitute, longitude, time zone, etc. Another option is to input components of the address you know, even if it is not complete, to find and validate the US address.
+	<br><br>
+	<b>Useful applications for this API:</b>
+	The first useful application of this API would be to validate an address, especially if you want it in the proper delivery address format. If you know some parts of an address and you want to find the missing parts, you can use this API to find the full address. The second useful application is if you have the address but want to find out extra information such as time zone, delivery point barcode, longitude, or latitutde.
+</div>
+
+</body>
+</html>
