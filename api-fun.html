@@ -17,7 +17,7 @@
 		var request = new XMLHttpRequest();
 		console.log("Request object created.");
 
-		request.open("GET", "https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155", true);
+		request.open("GET", "https://us-street.api.smartystreets.com/lookup?key=25338670614139870&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155", true);
 		console.log("Opened request file.");
 
 		request.onreadystatechange = function() {
