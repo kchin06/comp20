@@ -42,7 +42,7 @@
 					var result = request.responseText;
 					var data = JSON.parse(result);
 
-					document.getElementById("link").innerHTML = "<b>Requested URL:</b> <a href=https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155 > https://us-street.api.smartystreets.com/street-address?auth-id=07a66040-c39c-1059-be4a-ff469ce50fd9&auth-token=Eg1hX3w9vPPAskeXmc44&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155</a> <br> <br>";
+					document.getElementById("link").innerHTML = "<b>Requested URL:</b> <a href=https://us-street.api.smartystreets.com/street-address?key=25338670614139870&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155 > https://us-street.api.smartystreets.com/street-address?key=25338670614139870&candidates=10&street=389%20Boston%20Ave&city=Medford&state=MA&zipcode=02155</a> <br> <br>";
 
 					document.getElementById("data").innerHTML = "<b>Formatted Delivery Address: </b><br>" + data[0].delivery_line_1 + 
 							    "<br> " + data[0].last_line + "<br><br>";
@@ -52,7 +52,7 @@
 				}
 				/* if request status is not 200, it is not successful */
 				else {
-					console.log("Request stastus error. The status is: " + request.status);
+					console.log("Request status error. The status is: " + request.status);
 				}		
 			}
 			console.log("Ready state changed!");
