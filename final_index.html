@@ -1,0 +1,125 @@
+<!doctype html>
+ <html>
+<head>
+    <title>Final Project</title>
+    <meta charset="utf-8"/>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> 
+    <script src="scripts.js"></script>
+    <style "text/css">
+        body{background-color:#F5FFFA;}
+
+        /* Doesn't work lol
+        #table {
+            align: center;
+        }
+        */
+
+        .input {
+            font-family: Tahoma, Geneva, sans-serif;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #submit {
+         background-color: #bbb;
+         padding: .5em;
+         -moz-border-radius: 5px;
+         -webkit-border-radius: 5px;
+         border-radius: 6px;
+         color: #fff;
+         font-family: Tahoma, Geneva, sans-serif;
+         font-size: 18px;
+         text-decoration: none;
+         border: none;
+        }
+
+        #submit:hover {
+         border: none;
+         background: orange;
+         box-shadow: 0px 0px 1px #777;
+        }
+
+        #submit {
+        }
+
+
+
+        input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <!--
+    key: IRf1McTms041EqaYu7WMVAtq6JuW4WQd
+    API Call Format
+    https://app.ticketmaster.com/{package}/{version}/{resource}.json?apikey=**{API key}
+    https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
+    -->
+
+    <!-- displaying list of music events-->
+    <h1 style="text-align: center;">Music events in Boston:</h1> 
+
+    <!-- 
+    <div id="data" style="text-align: center;">Loading...</div>
+    <div id="test">Loading...</div>
+    -->
+
+    <!-- style table -->
+    <table id="table" align="center" border="1px" bordercolor="red" > </table>
+    <br>
+    <br>
+
+    <div>
+
+   <!-- 
+  search by city <input type="text" id = "city">
+   <button id = "submit">Submit</button>
+  
+  <button onclick = "loadData()">Submit</button>
+    -->
+    <div class = "input">
+    <form action="" method="post" name="formInput">
+        Search by city: 
+        <br>
+        <br>
+        <!--
+        <input style="width:150px; height:20px; margin-top: 6px;" type="text" name="city" id="inputBox" placeholder="Your city...">
+        -->
+        <input type="text" name="city" id="inputBox" placeholder="Your city...">
+        <br>
+        <br>
+        <input type="button" value="Submit" id="submit" onclick="loadData();tableContent();">
+ 
+    </form>
+    </div>
+   
+
+<script language="javascript">
+
+</script>
+
+
+</body>
+</html>
