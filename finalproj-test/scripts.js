@@ -27,7 +27,7 @@ function loadData(){
     request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.onreadystatechange= function(){
-        if(request.readyState == 4 && request.status ==200){
+        if(request.readyState == 4 && request.status == 200){
             var result = request.response;
             events = JSON.parse(result);
             /*data for names of events are an located in an array of objects called events. each object has key "name" with value artist name*/
@@ -60,7 +60,8 @@ function loadData(){
         /*displaying information*/
         document.getElementById("data").innerHTML=array_Artists + array_Genre + array_Date + array_Venue;
 
-        }else if (request.readyState == 4 && request.status!= 200){
+        }
+        else if (request.readyState == 4 && request.status!= 200){
             document.getElementById("data").innerHTML="Error";
         }
     }
@@ -76,12 +77,14 @@ function getInput () {
 }
 
 
-/* TEST */
+/* styling for content inside the table */
 function tableContent()
 {
     var dataTable = document.getElementById("table");
     dataTable.style.fontFamily="Tahoma, Geneva, sans-serif";
-    dataTable.style.bordercolor="red";
+    dataTable.style.backgroundColor="#e6e6e6";
+    dataTable.style.fontSize="medium";
+    // dataTable.style.bordercolor="red";
 }
 
 
@@ -110,6 +113,9 @@ var tr = table.insertRow(-1);
 for(var i = 0; i<cols.length; i++){
     /*creating table headers*/
     var theader = document.createElement("th");
+    theader.style.fontFamily="Rockwell";
+    theader.style.fontSize = "x-large";
+    theader.style.textAlign = "left";
     theader.innerHTML = cols[i];
 
     /*appending keys(column name) to table row*/
@@ -126,7 +132,7 @@ for (var i = 0; i<storedData.length; i++){
     for (var j = 0; j<cols.length; j++){
         var cell = trow.insertCell(-1);
         /*inserting cells at particular place*/
-        cell.innerHTML=storedData[i][cols[j]];
+        cell.innerHTML=storedData[i][cols[j]] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 }
 
