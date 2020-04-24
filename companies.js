@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://kchin06:Christmas04040331@cluster0-snuu3.mongodb.net/test?retryWrites=true&w=majority";
+const url = "mongodb+srv://kchin06:abcdefg@cluster0-snuu3.mongodb.net/test?retryWrites=true&w=majority";
 var fastcsv = require("fast-csv");
 var fs = require("fs");
 
