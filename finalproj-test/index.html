@@ -5,65 +5,63 @@
     <meta charset="utf-8"/>
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> 
     <script src="scripts.js"></script>
-    <style "text/css">
-        body{background-color:#F5FFFA;}
 
-        /* Doesn't work lol
-        #table {
-            align: center;
+    <!--- External Stylesheet --->
+    <link rel="stylesheet" type = "text/css" href="final_style.css" />
+
+    <style "text/css">
+    
+
+        body { 
+            background-color: #75a3a3;
         }
-        */
 
         .input {
-            font-family: Tahoma, Geneva, sans-serif;
+            font-family: Copperplate;
             font-weight: bold;
-            color: red;
+            color: black;
             text-align: center;
-            font-size: 20px;
+            font-size: 50px;
         }
 
         #submit {
-         background-color: #bbb;
-         padding: .5em;
-         -moz-border-radius: 5px;
-         -webkit-border-radius: 5px;
-         border-radius: 6px;
-         color: #fff;
-         font-family: Tahoma, Geneva, sans-serif;
-         font-size: 18px;
-         text-decoration: none;
-         border: none;
+            background-color: #ff6666;
+            padding: .5em;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 18px;
+            text-decoration: none;
+            border: none;
+            width: 110px;
         }
 
         #submit:hover {
-         border: none;
-         background: orange;
-         box-shadow: 0px 0px 1px #777;
+            border: none;
+            background: #696969;
+            box-shadow: 0px 0px 1px #777;
         }
-
-        #submit {
-        }
-
-
 
         input[type=text] {
-  width: 130px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: white;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  transition: width 0.4s ease-in-out;
-}
+            width: 205px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-size: 25px;
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            transition: width 0.4s ease-in-out;
+        }
 
-input[type=text]:focus {
-  width: 100%;
-}
-
+    input[type=text]:focus {
+        width: 50%;
+    }
 
 
     </style>
@@ -78,49 +76,49 @@ input[type=text]:focus {
     https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
     -->
 
-    <!-- displaying list of music events-->
-    <h1 style="text-align: center;">Music events in Boston:</h1> 
-  
-    <img src="searchicon.png" style="width:100%">
-    <!-- 
-    <div id="data" style="text-align: center;">Loading...</div>
-    <div id="test">Loading...</div>
-    -->
+    <!--- <header> --->
+    <div class="header-fixed">
+        <div class="header">
+            <a href="#default" class="logo">music events</a>
+        </div>
+    </div>   
 
-    <!-- style table -->
-    <table id="table" align="center" border="1px" bordercolor="red" > </table>
     <br>
     <br>
+
+    <!-- style table
+    <table id="table" align="center" border-width="thin medium"> </table>
+            outline color: bordercolor="#990000" -->
+    <br>
+    
 
     <div>
 
-   <!-- 
-  search by city <input type="text" id = "city">
-   <button id = "submit">Submit</button>
-  
-  <button onclick = "loadData()">Submit</button>
-    -->
     <div class = "input">
     <form action="" method="post" name="formInput">
-        Search by city: 
-        <br>
-        <br>
+        Find music events in your city!
+        
+        <div style="line-height:20%;">
+            <br>
+        </div>
+
         <!--
         <input style="width:150px; height:20px; margin-top: 6px;" type="text" name="city" id="inputBox" placeholder="Your city...">
         -->
-        <input type="text" name="city" id="inputBox" placeholder="Your city...">
+        <input type="text" name="city" id="inputBox" placeholder="Enter your city...">
+
+        <div style="line-height:20%;">
         <br>
-        <br>
-        <input type="button" value="Submit" id="submit" onclick="loadData();tableContent();">
+        </div>
+        <input type="button" value="Search" id="submit" onclick="loadData();tableContent();">
+     
  
     </form>
     </div>
-   
-
-<script language="javascript">
-
-</script>
-
+    <br>
+    <table id="table" align="center" border-width="thin medium"> </table>
+    <br>
+    <br>
 
 </body>
 </html>
